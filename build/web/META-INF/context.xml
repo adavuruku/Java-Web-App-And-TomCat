@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/FirstWebApp">
+    <Resource name="jdbc/testreport"
+        auth="Container"
+        type="javax.sql.DataSource"
+        username="root"
+        password=""
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/testreport?zeroDateTimeBehavior=convertToNull"
+        maxActive="15"
+        maxIdle="3"
+    />
+</Context>

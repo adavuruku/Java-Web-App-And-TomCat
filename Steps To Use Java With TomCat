@@ -1,0 +1,56 @@
+***************************
+ADD TOMCAT TO WINDOWS
+*************************
+1. download tomcat installer / download the zip file
+2. at installation create user (with username and password of your choice)
+    remember you will need it to connect in netbean.
+3. give the permission of 
+    for example in tomcat/conf/tomcat-users.xml
+
+    <user username="admin" password="admin" roles="admin-gui,manager-gui,manager-script" />
+
+
+1. download connector/j
+2. add to tomcat lib folders.
+3. add to the project library
+4. add resource connection to context.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/FirstWebApp">
+    <Resource name="jdbc/testreport"
+        auth="Container"
+        type="javax.sql.DataSource"
+        username="root"
+        password=""
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/testreport?zeroDateTimeBehavior=convertToNull"
+        maxActive="15"
+        maxIdle="3"
+    />
+</Context>
+5. add the link to (4) in web.xml
+    <resource-ref>
+        <description>My Connection To Database</description>
+        <res-ref-name>jdbc/testreport</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+6. add connections in ur code
+     DataSource dataSource = (DataSource) ic.lookup("java:comp/env/jdbc/testreport");
+     Connection con = dataSource.getConnection();
+
+     thats all - you can now use connection for queries and fire on
+
+Note: glass fish uses persistence but tomcat uses resource connection
+
+Note : if you want the resource created in step (4) to be available for all
+app in tomcat. you can add it to tomcat/conf/server.xml so any app can use it.
+then point to it in context.xml like this
+<Context>
+    <ResourceLink name="jdbc/testreport"
+    global="jdbc/[GlobalResourceName]"
+    type="javax.sql.DataSource"/>
+</Context>
+
+then point to it in web.xml just like you did in step(5)
+
