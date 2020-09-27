@@ -1,0 +1,50 @@
+Vicidial installation
+
+1. Create the virtual box file
+	1.new
+		Name(Vicidial or any name of your choice)
+		Type: (others)
+		Version (other unknown 64 bit)
+
+	2. memory size (2gb in mb)
+	3. select create a virtual hardisk now
+	4. VHD
+	5. Fixed Size then allocate (10gb)
+	6. click create
+2. Set Network
+	Go to setting of the virtual box
+	select network -> Bridged Adapter
+
+3. Set Storage or load the image file
+	Settings -> Storage -> DISK ICON -> choose a disk file -> upload the vicidial iso file (64 bit)
+
+4. start the virstual box.
+	select drive to boot -> select vicibox image.
+	wait for it to boot to login
+5. Installation .
+	login : root <-> password:vicidial
+	
+	os1.type os-install
+	(note: use tab key to switch between the options)
+	a. language settings - leave as default and click next.
+	b. country settings - select Africa then lagos. click next
+	c. Partition setting - leave default click next.
+	d. choose a password for the system (vicidial) -> confirm password and click next
+	e. Preview Of All Settings - click install -> install
+	
+	Wait for system to install.
+	f. click reboot later.
+	(a functional internet must be on your system - internet that gives one of your system physical network port(lan, wan) an IP address)
+	g. install vicibox express 
+		type vicibox-express.
+		type (y)yes on the question to continue installation of vicibox express
+	wait for it to fully install.
+
+	h. type reboot to restart the system
+
+	i. stop / close the machine.
+	
+	j. delete the virtual disk in (3) -> setting ->storage -> by rightClicking and select Remove
+	k. start the system and login root -> pass ->vicidial 
+	
+	Note: You can type ifconfig to c d ip the vicibox is running on.

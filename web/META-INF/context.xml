@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/FirstWebApp">
+    <!-- Resource define for only the app to use-->
     <Resource name="jdbc/testreport"
         auth="Container"
         type="javax.sql.DataSource"
@@ -10,4 +11,13 @@
         maxActive="15"
         maxIdle="3"
     />
+    
+    <!-- Base On Tom Cat Server conf/server.xml - 
+    (Global Resource)this available for any App install in the tomcat
+    use resourceLinking to point to  global resource-->
+    <ResourceLink name="jdbc/testReportTwo"
+        global="jdbc/testreportGlobal"
+        type="javax.sql.DataSource"
+    />
+
 </Context>
